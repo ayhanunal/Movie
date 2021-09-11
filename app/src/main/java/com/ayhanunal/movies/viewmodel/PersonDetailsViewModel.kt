@@ -1,5 +1,6 @@
 package com.ayhanunal.movies.viewmodel
 
+import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ayhanunal.movies.model.ActorDetail
@@ -12,7 +13,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 
-class PersonDetailsViewModel : ViewModel() {
+class PersonDetailsViewModel(application: Application) : BaseViewModel(application) {
 
     private val movieApiService = MovieAPIService()
     private val disposable = CompositeDisposable()
