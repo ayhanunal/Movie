@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Movies</string>
+
+    <!-- fragment feed -->
+    <string name="feed_search_edit_text_hint">Search Feed</string>
+    <string name="feed_search_button_text">Search</string>
+    <string name="feed_search_error_text">Collection is empty or error has occurred.</string>
+
+    <!-- fragment movie details -->
+    <string name="movie_details_cast_text">CAST</string>
+    <string name="movie_details_actor_details_video_text">VIDEO</string>
+
+    <!-- fragment person details -->
+    <string name="person_details_credits_text">CREDITS</string>
+
+    <!-- row feed -->
+    <string name="row_feed_movie_name_text">Movie Name</string>
+    <string name="row_feed_movie_description_text">Movie Description</string>
+
+</resources>
