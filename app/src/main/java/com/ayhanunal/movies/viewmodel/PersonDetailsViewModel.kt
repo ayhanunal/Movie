@@ -61,6 +61,7 @@ class PersonDetailsViewModel : ViewModel() {
     }
 
     override fun onCleared() {
+        super.onCleared()
         disposable.clear()
     }
 

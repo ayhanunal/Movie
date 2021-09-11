@@ -79,6 +79,7 @@ class MovieDetailsViewModel : ViewModel() {
     }
 
     override fun onCleared() {
+        super.onCleared()
         disposable.clear()
     }
 
