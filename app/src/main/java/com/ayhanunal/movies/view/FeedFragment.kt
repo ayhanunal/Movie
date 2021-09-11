@@ -79,6 +79,7 @@ class FeedFragment : Fragment(R.layout.fragment_feed), SearchView.OnQueryTextLis
                     movieAdapter.updateList(it)
                     isLoading = false
                 } else {
+                    //Feed Fragment first launch
                     movieAdapter.updateList(it)
                 }
             }
