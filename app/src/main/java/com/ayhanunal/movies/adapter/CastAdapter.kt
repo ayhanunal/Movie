@@ -7,7 +7,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.ayhanunal.movies.R
 import com.ayhanunal.movies.model.Cast
-import com.ayhanunal.movies.util.downloadFromUrl
+import com.ayhanunal.movies.util.downloadImage
 import com.ayhanunal.movies.util.placeholderProgressBar
 import com.ayhanunal.movies.view.MovieDetailsFragmentDirections
 import kotlinx.android.synthetic.main.row_cast.view.*
@@ -27,7 +27,7 @@ class CastAdapter(private val list: List<Cast>) : RecyclerView.Adapter<CastAdapt
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemView.row_cast_actor_image.downloadFromUrl(IMAGE_PATH + list[position].profile_path, placeholderProgressBar(holder.itemView.context))
+        holder.itemView.row_cast_actor_image.downloadImage(IMAGE_PATH + list[position].profile_path, placeholderProgressBar(holder.itemView.context))
         holder.itemView.row_cast_actor_name.text = list[position].name
 
         holder.itemView.setOnClickListener {

@@ -9,12 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.ayhanunal.movies.R
 import com.ayhanunal.movies.adapter.CreditAdapter
-import com.ayhanunal.movies.databinding.FragmentMovieDetailsBinding
 import com.ayhanunal.movies.databinding.FragmentPersonDetailsBinding
-import com.ayhanunal.movies.util.downloadFromUrl
+import com.ayhanunal.movies.util.downloadImage
 import com.ayhanunal.movies.util.placeholderProgressBar
 import com.ayhanunal.movies.viewmodel.PersonDetailsViewModel
 import kotlinx.android.synthetic.main.fragment_person_details.*
@@ -57,7 +55,7 @@ class PersonDetailsFragment : Fragment() {
             dataBinding.actorDetail = it
 
             context?.let {context ->
-                person_details_actor_detail_image.downloadFromUrl(IMAGE_PATH + it.profile_path, placeholderProgressBar(context))
+                person_details_actor_detail_image.downloadImage(IMAGE_PATH + it.profile_path, placeholderProgressBar(context))
             }
         })
 

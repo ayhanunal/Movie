@@ -11,12 +11,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.ayhanunal.movies.R
 import com.ayhanunal.movies.adapter.CastAdapter
 import com.ayhanunal.movies.adapter.VideosAdapter
 import com.ayhanunal.movies.databinding.FragmentMovieDetailsBinding
-import com.ayhanunal.movies.util.downloadFromUrl
+import com.ayhanunal.movies.util.downloadImage
 import com.ayhanunal.movies.util.placeholderProgressBar
 import com.ayhanunal.movies.viewmodel.MovieDetailsViewModel
 import kotlinx.android.synthetic.main.fragment_movie_details.*
@@ -75,7 +74,7 @@ class MovieDetailsFragment : Fragment() {
 
             context?.let {context ->
                 movieLink = it.homepage
-                movie_details_detail_image.downloadFromUrl(IMAGE_PATH + it.backdrop_path, placeholderProgressBar(context))
+                movie_details_detail_image.downloadImage(IMAGE_PATH + it.backdrop_path, placeholderProgressBar(context))
             }
 
         })

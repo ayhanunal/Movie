@@ -7,7 +7,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.ayhanunal.movies.R
 import com.ayhanunal.movies.model.Result
-import com.ayhanunal.movies.util.downloadFromUrl
+import com.ayhanunal.movies.util.downloadImage
 import com.ayhanunal.movies.util.placeholderProgressBar
 import com.ayhanunal.movies.view.FeedFragmentDirections
 import kotlinx.android.synthetic.main.row_feed.view.*
@@ -32,7 +32,7 @@ class FeedAdapter(private val list: ArrayList<Result>) : RecyclerView.Adapter<Fe
         holder.itemView.row_feed_movie_date.text = "Release Date: ${list[position].release_date}"
         holder.itemView.row_feed_movie_popularity.text = "Popularity: ${list[position].popularity}"
         holder.itemView.row_feed_movie_adult.text = "Adult: " + if (list[position].adult) "Yes" else "No"
-        holder.itemView.row_feed_movie_image.downloadFromUrl(IMAGE_PATH + list[position].poster_path, placeholderProgressBar(holder.itemView.context))
+        holder.itemView.row_feed_movie_image.downloadImage(IMAGE_PATH + list[position].poster_path, placeholderProgressBar(holder.itemView.context))
 
         holder.itemView.setOnClickListener {
             val action = FeedFragmentDirections.actionFeedFragmentToMovieDetailsFragment(list[position].id)

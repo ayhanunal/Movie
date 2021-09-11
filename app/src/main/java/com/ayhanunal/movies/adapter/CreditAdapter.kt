@@ -7,7 +7,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.ayhanunal.movies.R
 import com.ayhanunal.movies.model.CastX
-import com.ayhanunal.movies.util.downloadFromUrl
+import com.ayhanunal.movies.util.downloadImage
 import com.ayhanunal.movies.util.placeholderProgressBar
 import com.ayhanunal.movies.view.PersonDetailsFragmentDirections
 import kotlinx.android.synthetic.main.row_credits.view.*
@@ -27,7 +27,7 @@ class CreditAdapter(private val list: List<CastX>) : RecyclerView.Adapter<Credit
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemView.row_credits_credit_image.downloadFromUrl(IMAGE_PATH + list[position].backdrop_path, placeholderProgressBar(holder.itemView.context))
+        holder.itemView.row_credits_credit_image.downloadImage(IMAGE_PATH + list[position].backdrop_path, placeholderProgressBar(holder.itemView.context))
         holder.itemView.row_credits_credit_name.text = list[position].title
 
         holder.itemView.setOnClickListener {

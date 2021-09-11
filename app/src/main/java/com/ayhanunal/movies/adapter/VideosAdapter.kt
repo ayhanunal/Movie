@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ayhanunal.movies.R
 import com.ayhanunal.movies.model.ResultX
-import com.ayhanunal.movies.util.downloadFromUrl
+import com.ayhanunal.movies.util.downloadImage
 import com.ayhanunal.movies.util.placeholderProgressBar
 import kotlinx.android.synthetic.main.row_videos.view.*
 
@@ -27,7 +27,7 @@ class VideosAdapter(private val list: List<ResultX>): RecyclerView.Adapter<Video
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.row_videos_name_text.text = list[position].name
-        holder.itemView.row_videos_image.downloadFromUrl("https://img.youtube.com/vi/"+list[position].key+"/0.jpg", placeholderProgressBar(holder.itemView.context))
+        holder.itemView.row_videos_image.downloadImage("https://img.youtube.com/vi/"+list[position].key+"/0.jpg", placeholderProgressBar(holder.itemView.context))
 
         holder.itemView.setOnClickListener {
             openYoutubeLink(holder.itemView, list[position].key)
