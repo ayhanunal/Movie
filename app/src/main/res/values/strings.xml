@@ -4,7 +4,7 @@
     <!-- fragment feed -->
     <string name="feed_search_edit_text_hint">Search Movie</string>
     <string name="feed_search_button_text">Search</string>
-    <string name="feed_search_error_text">API Error !</string>
+    <string name="feed_search_error_text">API error or movie not found.</string>
 
     <!-- fragment movie details -->
     <string name="movie_details_cast_text">CAST</string>
