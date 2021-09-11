@@ -23,8 +23,6 @@ import kotlinx.android.synthetic.main.fragment_movie_details.*
 
 class MovieDetailsFragment : Fragment() {
 
-    private val IMAGE_PATH = "https://image.tmdb.org/t/p/w780"
-
     private var movieId = 0
     private var adapter = CastAdapter(arrayListOf())
     private var videosAdapter = VideosAdapter(arrayListOf())
@@ -74,7 +72,6 @@ class MovieDetailsFragment : Fragment() {
 
             context?.let {context ->
                 movieLink = it.homepage
-                movie_details_detail_image.downloadImage(IMAGE_PATH + it.backdrop_path, placeholderProgressBar(context))
             }
 
         })

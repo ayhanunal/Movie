@@ -19,8 +19,6 @@ import kotlinx.android.synthetic.main.fragment_person_details.*
 
 class PersonDetailsFragment : Fragment() {
 
-    private val IMAGE_PATH = "https://image.tmdb.org/t/p/w780"
-
     private lateinit var dataBinding: FragmentPersonDetailsBinding
     private lateinit var viewModel: PersonDetailsViewModel
 
@@ -54,9 +52,6 @@ class PersonDetailsFragment : Fragment() {
         viewModel.detail.observe(viewLifecycleOwner, Observer {
             dataBinding.actorDetail = it
 
-            context?.let {context ->
-                person_details_actor_detail_image.downloadImage(IMAGE_PATH + it.profile_path, placeholderProgressBar(context))
-            }
         })
 
         viewModel.credits.observe(viewLifecycleOwner, Observer {

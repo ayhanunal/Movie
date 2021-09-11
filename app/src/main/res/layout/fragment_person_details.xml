@@ -28,6 +28,7 @@
                 <ImageView
                     android:id="@+id/person_details_actor_detail_image"
                     android:scaleType="fitXY"
+                    android:downloadUrl="@{@string/fragment_person_details_person_image(actorDetail.profile_path)}"
                     android:layout_width="150dp"
                     android:layout_height="200dp" />
 

@@ -20,7 +20,9 @@
     <string name="row_feed_movie_popularity_text">Movie Popularity</string>
     <string name="row_feed_movie_adult_text">Movie Adult</string>
 
-    <!-- data binding -->
+    <!-- data binding download image paths -->
     <string name="row_feed_poster_image">https://image.tmdb.org/t/p/w185%s</string>
+    <string name="fragment_person_details_person_image">https://image.tmdb.org/t/p/w780%s</string>
+    <string name="fragment_movie_details_movie_image">https://image.tmdb.org/t/p/w780%s</string>
 
 </resources>
