@@ -35,7 +35,7 @@
                     android:id="@+id/row_feed_movie_image"
                     android:layout_width="170dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_launcher_background"
+                    android:downloadUrl="@{@string/row_feed_poster_image(movie.poster_path)}"
                     android:scaleType="fitXY" />
 
                 <LinearLayout
@@ -78,6 +78,7 @@
                         android:id="@+id/row_feed_movie_adult"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="@{movie.adult ? `Adult: Yes` : `Adult: No`}"
                         android:layout_margin="2dp" />
 
                     <androidx.appcompat.widget.AppCompatTextView

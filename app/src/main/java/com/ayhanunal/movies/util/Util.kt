@@ -3,6 +3,7 @@ package com.ayhanunal.movies.util
 import android.content.Context
 import android.graphics.PorterDuff
 import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.ayhanunal.movies.R
 import com.bumptech.glide.Glide
@@ -28,3 +29,10 @@ fun placeholderProgressBar(context: Context) : CircularProgressDrawable {
         start()
     }
 }
+
+@BindingAdapter("android:downloadUrl")
+fun downloadImage(view: ImageView, url: String?){
+    view.downloadImage(url, placeholderProgressBar(view.context))
+}
+
+

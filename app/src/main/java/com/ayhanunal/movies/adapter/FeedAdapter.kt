@@ -18,8 +18,6 @@ import kotlinx.android.synthetic.main.row_feed.view.*
 
 class FeedAdapter(private val list: ArrayList<Result>) : RecyclerView.Adapter<FeedAdapter.FeedViewHolder>(), MovieClickListener{
 
-    private val IMAGE_PATH = "https://image.tmdb.org/t/p/w185"
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = DataBindingUtil.inflate<RowFeedBinding>(inflater, R.layout.row_feed, parent, false)
@@ -34,8 +32,6 @@ class FeedAdapter(private val list: ArrayList<Result>) : RecyclerView.Adapter<Fe
 
         holder.view.listener = this
         holder.view.movie = list[position]
-        holder.itemView.row_feed_movie_image.downloadImage(IMAGE_PATH + list[position].poster_path, placeholderProgressBar(holder.itemView.context))
-        holder.itemView.row_feed_movie_adult.text = "Adult: " + if (list[position].adult) "Yes" else "No"
 
     }
 
@@ -45,6 +41,7 @@ class FeedAdapter(private val list: ArrayList<Result>) : RecyclerView.Adapter<Fe
         notifyDataSetChanged()
     }
 
+    // TODO: bu silinecek, test olarak dursun
     fun addPaginationList(updatedList: List<Result>) {
         list.addAll(updatedList)
         notifyDataSetChanged()
