@@ -24,5 +24,6 @@
     <string name="row_feed_poster_image">https://image.tmdb.org/t/p/w185%s</string>
     <string name="fragment_person_details_person_image">https://image.tmdb.org/t/p/w780%s</string>
     <string name="fragment_movie_details_movie_image">https://image.tmdb.org/t/p/w780%s</string>
+    <string name="fragment_movie_details_video_image">https://img.youtube.com/vi/%s/0.jpg</string>
 
 </resources>

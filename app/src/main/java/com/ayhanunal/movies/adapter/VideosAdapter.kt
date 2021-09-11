@@ -6,18 +6,20 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ayhanunal.movies.R
+import com.ayhanunal.movies.adapter.listener.VideoClickListener
+import com.ayhanunal.movies.databinding.RowVideosBinding
 import com.ayhanunal.movies.model.ResultX
-import com.ayhanunal.movies.util.downloadImage
-import com.ayhanunal.movies.util.placeholderProgressBar
-import kotlinx.android.synthetic.main.row_videos.view.*
 
-class VideosAdapter(private val list: List<ResultX>): RecyclerView.Adapter<VideosAdapter.ViewHolder>() {
+class VideosAdapter(private val list: List<ResultX>): RecyclerView.Adapter<VideosAdapter.ViewHolder>(),
+    VideoClickListener {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.row_videos, parent, false)
+        val view = DataBindingUtil.inflate<RowVideosBinding>(inflater, R.layout.row_videos, parent, false)
         return ViewHolder(view)
     }
 
@@ -26,15 +28,11 @@ class VideosAdapter(private val list: List<ResultX>): RecyclerView.Adapter<Video
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemView.row_videos_name_text.text = list[position].name
-        holder.itemView.row_videos_image.downloadImage("https://img.youtube.com/vi/"+list[position].key+"/0.jpg", placeholderProgressBar(holder.itemView.context))
-
-        holder.itemView.setOnClickListener {
-            openYoutubeLink(holder.itemView, list[position].key)
-        }
+        holder.view.listener = this
+        holder.view.video = list[position]
     }
 
-    private fun openYoutubeLink(view: View, youtubeID: String) {
+    private fun openYoutube(view: View, youtubeID: String) {
         val intentApp = Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" + youtubeID))
         val intentBrowser = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=" + youtubeID))
         try {
@@ -44,6 +42,10 @@ class VideosAdapter(private val list: List<ResultX>): RecyclerView.Adapter<Video
         }
     }
 
+    override fun onVideoClicked(v: View) {
+        val videoKey = v.findViewById<TextView>(R.id.row_videos_key_text).text.toString()
+        openYoutube(v, videoKey)
+    }
 
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view)
+    class ViewHolder(var view: RowVideosBinding): RecyclerView.ViewHolder(view.root)
 }
