@@ -19,8 +19,8 @@
 
             <ImageView
                 android:id="@+id/row_cast_actor_image"
-                android:layout_width="100dp"
-                android:layout_height="130dp"
+                android:layout_width="80dp"
+                android:layout_height="100dp"
                 android:scaleType="fitXY"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +28,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/row_cast_actor_name"
-                android:layout_width="100dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:singleLine="true"

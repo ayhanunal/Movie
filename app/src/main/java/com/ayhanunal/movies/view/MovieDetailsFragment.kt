@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ayhanunal.movies.R
 import com.ayhanunal.movies.adapter.CastAdapter
@@ -65,7 +66,7 @@ class MovieDetailsFragment : Fragment() {
     private fun observeLiveData() {
         viewModel.actors.observe(viewLifecycleOwner, Observer {
             adapter = CastAdapter(it)
-            movie_details_cast_recycler_view.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            movie_details_cast_recycler_view.layoutManager = GridLayoutManager(context, 4)
             movie_details_cast_recycler_view.adapter = adapter
         })
 
@@ -99,7 +100,7 @@ class MovieDetailsFragment : Fragment() {
 
         viewModel.videos.observe(viewLifecycleOwner, Observer {
             videosAdapter = VideosAdapter(it.results)
-            movie_details_actor_videos_recycler_view.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            movie_details_actor_videos_recycler_view.layoutManager = GridLayoutManager(context, 3)
             movie_details_actor_videos_recycler_view.adapter = videosAdapter
         })
     }
