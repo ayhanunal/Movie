@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.ayhanunal.movies.R
+import com.ayhanunal.movies.adapter.listener.MovieClickListener
 import com.ayhanunal.movies.databinding.RowFeedBinding
 import com.ayhanunal.movies.model.Result
 import com.ayhanunal.movies.util.downloadImage
@@ -15,7 +16,7 @@ import com.ayhanunal.movies.util.placeholderProgressBar
 import com.ayhanunal.movies.view.FeedFragmentDirections
 import kotlinx.android.synthetic.main.row_feed.view.*
 
-class FeedAdapter(private val list: ArrayList<Result>) : RecyclerView.Adapter<FeedAdapter.FeedViewHolder>(), MovieClickListener {
+class FeedAdapter(private val list: ArrayList<Result>) : RecyclerView.Adapter<FeedAdapter.FeedViewHolder>(), MovieClickListener{
 
     private val IMAGE_PATH = "https://image.tmdb.org/t/p/w185"
 

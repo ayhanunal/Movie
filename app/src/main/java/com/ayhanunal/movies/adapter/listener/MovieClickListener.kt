@@ -1,4 +1,4 @@
-package com.ayhanunal.movies.adapter
+package com.ayhanunal.movies.adapter.listener
 
 import android.view.View
 

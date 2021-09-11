@@ -10,7 +10,7 @@
             type="com.ayhanunal.movies.model.Result" />
         <variable
             name="listener"
-            type="com.ayhanunal.movies.adapter.MovieClickListener" />
+            type="com.ayhanunal.movies.adapter.listener.MovieClickListener" />
     </data>
 
     <LinearLayout
