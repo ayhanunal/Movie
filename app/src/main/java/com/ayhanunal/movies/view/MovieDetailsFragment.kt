@@ -1,5 +1,7 @@
 package com.ayhanunal.movies.view
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +20,7 @@ import com.ayhanunal.movies.util.placeholderProgressBar
 import com.ayhanunal.movies.viewmodel.MovieDetailsViewModel
 import kotlinx.android.synthetic.main.fragment_movie_details.*
 
+
 class MovieDetailsFragment : Fragment() {
 
     private val IMAGE_PATH = "https://image.tmdb.org/t/p/w780"
@@ -28,6 +31,7 @@ class MovieDetailsFragment : Fragment() {
 
     private lateinit var dataBinding: FragmentMovieDetailsBinding
     private lateinit var viewModel : MovieDetailsViewModel
+    private lateinit var movieLink: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +53,13 @@ class MovieDetailsFragment : Fragment() {
         viewModel.refreshData(movieId)
 
         observeLiveData()
+
+        movie_details_fab.setOnClickListener {
+            if (!movieLink.isNullOrEmpty()){
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(movieLink))
+                startActivity(browserIntent)
+            }
+        }
     }
 
     private fun observeLiveData() {
@@ -62,6 +73,7 @@ class MovieDetailsFragment : Fragment() {
             dataBinding.movieDetail = it
 
             context?.let {context ->
+                movieLink = it.homepage
                 movie_details_detail_image.downloadFromUrl(IMAGE_PATH + it.backdrop_path, placeholderProgressBar(context))
             }
 
