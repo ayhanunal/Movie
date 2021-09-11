@@ -28,8 +28,10 @@ class FeedAdapter(private val list: ArrayList<Result>) : RecyclerView.Adapter<Fe
 
     override fun onBindViewHolder(holder: FeedViewHolder, position: Int) {
         holder.itemView.row_feed_movie_name.text = list[position].title
-        holder.itemView.row_feed_movie_description.text = list[position].overview
-        holder.itemView.row_feed_movie_date.text = list[position].release_date
+        holder.itemView.row_feed_movie_language.text = "Language: ${list[position].original_language}"
+        holder.itemView.row_feed_movie_date.text = "Release Date: ${list[position].release_date}"
+        holder.itemView.row_feed_movie_popularity.text = "Popularity: ${list[position].popularity}"
+        holder.itemView.row_feed_movie_adult.text = "Adult: " + if (list[position].adult) "Yes" else "No"
         holder.itemView.row_feed_movie_image.downloadFromUrl(IMAGE_PATH + list[position].poster_path, placeholderProgressBar(holder.itemView.context))
 
         holder.itemView.setOnClickListener {
