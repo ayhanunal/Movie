@@ -19,7 +19,7 @@
 
             <ImageView
                 android:id="@+id/row_credits_credit_image"
-                android:layout_width="100dp"
+                android:layout_width="130dp"
                 android:layout_height="100dp"
                 android:scaleType="fitXY"
                 app:layout_constraintEnd_toEndOf="parent"

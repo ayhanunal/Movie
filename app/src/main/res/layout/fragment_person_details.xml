@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="actorDetail"
             type="com.ayhanunal.movies.model.ActorDetail" />
@@ -16,63 +14,91 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/person_details_actor_detail_image"
+            <LinearLayout
+                android:orientation="horizontal"
+                android:padding="5dp"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_height="wrap_content">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/person_details_actor_detail_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:text="@{actorDetail.name}"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/person_details_actor_detail_image" />
+                <ImageView
+                    android:id="@+id/person_details_actor_detail_image"
+                    android:scaleType="fitXY"
+                    android:layout_width="150dp"
+                    android:layout_height="200dp" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/person_details_actor_detail_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_margin="4dp"
+                        android:text="@{actorDetail.name}"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/person_details_actor_detail_birthday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:text="@{`Birthday: ` + actorDetail.birthday}"
+                        android:textSize="18sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/person_details_actor_detail_place_of_birth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:text="@{`Place of Birth: ` + actorDetail.place_of_birth}"
+                        android:textSize="18sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/person_details_actor_detail_popularity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:text="@{`Popularity: ` + actorDetail.popularity}"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/person_details_actor_detail_bio"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:text="@{actorDetail.biography}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/person_details_actor_detail_name" />
+                android:text="@{actorDetail.biography}" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/person_details_actor_detail_text_credits"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:gravity="center"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:layout_margin="4dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/person_details_actor_detail_bio"
                 android:text="@string/person_details_credits_text"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/person_details_actor_credits_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/person_details_actor_detail_text_credits" />
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="16dp" />
 
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
     </ScrollView>
 
