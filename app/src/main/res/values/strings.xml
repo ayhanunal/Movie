@@ -16,5 +16,6 @@
     <!-- row feed -->
     <string name="row_feed_movie_name_text">Movie Name</string>
     <string name="row_feed_movie_description_text">Movie Description</string>
+    <string name="row_feed_movie_date_text">Movie Date</string>
 
 </resources>

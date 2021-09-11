@@ -40,6 +40,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/row_feed_movie_image">
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/row_feed_movie_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/row_feed_movie_date_text" />
+
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/row_feed_movie_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
