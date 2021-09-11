@@ -1,6 +1,8 @@
 package com.ayhanunal.movies.service
 
 import com.ayhanunal.movies.model.*
+import com.ayhanunal.movies.util.Constants.API_KEY
+import com.ayhanunal.movies.util.Constants.BASE_URL
 import io.reactivex.Single
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -8,8 +10,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MovieAPIService {
 
-    private val API_KEY = "01ec5c16d3a7d5c6af56d8e7d9e3af79"
-    private val BASE_URL = "https://api.themoviedb.org/3/"
     private val api = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
