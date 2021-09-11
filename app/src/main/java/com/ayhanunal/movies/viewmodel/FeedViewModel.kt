@@ -19,6 +19,7 @@ class FeedViewModel : ViewModel() {
     var movies = MutableLiveData<List<Result>>()
     var movieError = MutableLiveData<Boolean>()
     var movieLoading = MutableLiveData<Boolean>()
+    var totalPage = MutableLiveData<Int>()
 
     fun refreshData(page: Int, query: String? = null) {
         getDataFromAPI(page, query)
@@ -34,6 +35,7 @@ class FeedViewModel : ViewModel() {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeWith(object : DisposableSingleObserver<Movie>() {
                         override fun onSuccess(t: Movie) {
+                            totalPage.value = t.total_pages
                             movies.value = t.results
                             movieError.value = false
                             movieLoading.value = false
@@ -55,6 +57,7 @@ class FeedViewModel : ViewModel() {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeWith(object : DisposableSingleObserver<Search>() {
                         override fun onSuccess(t: Search) {
+                            totalPage.value = t.total_pages
                             movies.value = t.results
                             movieError.value = false
                             movieLoading.value = false

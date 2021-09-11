@@ -1,7 +1,6 @@
 package com.ayhanunal.movies.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -21,6 +20,15 @@ class FeedFragment : Fragment(R.layout.fragment_feed), SearchView.OnQueryTextLis
 
     private var page = 1
     private var isLoading = false
+    private var totalPages: Int = 1
+    private var lastSearch: String? = null
+
+    override fun onResume() {
+        super.onResume()
+        //page state returns to top after searching for movies
+        page = 1
+        lastSearch = null
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,7 +44,31 @@ class FeedFragment : Fragment(R.layout.fragment_feed), SearchView.OnQueryTextLis
 
         observeLiveData()
 
-        checkRecyclerViewPagination()
+        fragment_feed_next_page_button.setOnClickListener {
+            if (!isLoading && page < totalPages){
+                isLoading = true
+                page++
+                if (lastSearch != null){
+                    viewModel.refreshData(page, lastSearch)
+                }else{
+                    viewModel.refreshData(page)
+                }
+                fragment_feed_page_text_view.text = "${page} / ${totalPages}"
+            }
+        }
+
+        fragment_feed_previous_page_button.setOnClickListener {
+            if (!isLoading && page > 1){
+                isLoading = true
+                page--
+                if (lastSearch != null){
+                    viewModel.refreshData(page, lastSearch)
+                }else{
+                    viewModel.refreshData(page)
+                }
+                fragment_feed_page_text_view.text = "${page} / ${totalPages}"
+            }
+        }
 
     }
 
@@ -44,7 +76,7 @@ class FeedFragment : Fragment(R.layout.fragment_feed), SearchView.OnQueryTextLis
         viewModel.movies.observe(viewLifecycleOwner, Observer {movies ->
             movies?.let {
                 if (isLoading) {
-                    movieAdapter.addPaginationList(it)
+                    movieAdapter.updateList(it)
                     isLoading = false
                 } else {
                     movieAdapter.updateList(it)
@@ -75,35 +107,26 @@ class FeedFragment : Fragment(R.layout.fragment_feed), SearchView.OnQueryTextLis
                 }
             }
         })
-    }
 
-    private fun checkRecyclerViewPagination() {
-
-        feed_fragment_feed_recycler_view.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-                if (!recyclerView.canScrollVertically(1) && !isLoading) {
-                    isLoading = true
-                    page++
-                    viewModel.refreshData(page)
-                }
+        viewModel.totalPage.observe(viewLifecycleOwner, Observer {tPages ->
+            tPages?.let {
+                totalPages = tPages
+                fragment_feed_page_text_view.text = "${page} / ${totalPages}"
             }
         })
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
-        if (query.isNullOrEmpty()) {
-            page = 1
-            viewModel.refreshData(page)
-        } else {
-            viewModel.refreshData(page, query)
-        }
+        lastSearch = query
+        page = 1
+        viewModel.refreshData(page, query)
         return true
 
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
         if(newText.isNullOrEmpty()){
+            lastSearch = null
             page = 1
             viewModel.refreshData(page)
         }
