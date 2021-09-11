@@ -1,7 +1,9 @@
 package com.ayhanunal.movies.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -12,7 +14,7 @@ import com.ayhanunal.movies.adapter.FeedAdapter
 import com.ayhanunal.movies.viewmodel.FeedViewModel
 import kotlinx.android.synthetic.main.fragment_feed.*
 
-class FeedFragment : Fragment(R.layout.fragment_feed) {
+class FeedFragment : Fragment(R.layout.fragment_feed), SearchView.OnQueryTextListener {
 
     private lateinit var viewModel : FeedViewModel
     private val movieAdapter = FeedAdapter(arrayListOf())
@@ -22,6 +24,9 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val item = view.findViewById<SearchView>(R.id.feed_fragment_feed_search_view)
+        item.setOnQueryTextListener(this)
 
         viewModel = ViewModelProviders.of(this).get(FeedViewModel::class.java)
         viewModel.refreshData(page)
@@ -33,16 +38,6 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
 
         checkRecyclerViewPagination()
 
-        feed_fragment_btn_feed_search?.setOnClickListener {
-            val query = feed_fragment_feed_search_edit_text.text.toString()
-
-            if (query.isEmpty()) {
-                page = 1
-                viewModel.refreshData(page)
-            } else {
-                viewModel.refreshData(page, query)
-            }
-        }
     }
 
     private fun observeLiveData() {
@@ -94,6 +89,25 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
                 }
             }
         })
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        if (query.isNullOrEmpty()) {
+            page = 1
+            viewModel.refreshData(page)
+        } else {
+            viewModel.refreshData(page, query)
+        }
+        return true
+
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        if(newText.isNullOrEmpty()){
+            page = 1
+            viewModel.refreshData(page)
+        }
+        return true
     }
 
 }

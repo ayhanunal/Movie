@@ -16,7 +16,7 @@
             app:contentInsetLeft="0dp"
             app:contentInsetStart="0dp"
             app:titleTextColor="@color/white"
-            android:background="@color/app_main_color"
+            android:background="@color/teal_700"
             android:layout_weight="10">
 
             <androidx.constraintlayout.widget.ConstraintLayout
