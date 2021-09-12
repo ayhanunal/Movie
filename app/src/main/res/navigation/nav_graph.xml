@@ -15,18 +15,12 @@
         <action
             android:id="@+id/action_movieDetailsFragment_to_personDetailsFragment"
             app:destination="@id/personDetailsFragment" />
-        <action
-            android:id="@+id/action_movieDetailsFragment_to_feedFragment2"
-            app:destination="@id/feedFragment" />
     </fragment>
     <fragment
         android:id="@+id/feedFragment"
         android:name="com.ayhanunal.movies.view.FeedFragment"
         android:label="fragment_feed"
         tools:layout="@layout/fragment_feed" >
-        <action
-            android:id="@+id/action_feedFragment_to_personDetailsFragment"
-            app:destination="@id/personDetailsFragment" />
         <action
             android:id="@+id/action_feedFragment_to_movieDetailsFragment"
             app:destination="@id/movieDetailsFragment" />
@@ -42,8 +36,5 @@
             android:name="actorID"
             app:argType="integer"
             android:defaultValue="0" />
-        <action
-            android:id="@+id/action_personDetailsFragment_to_feedFragment"
-            app:destination="@id/feedFragment" />
     </fragment>
 </navigation>
