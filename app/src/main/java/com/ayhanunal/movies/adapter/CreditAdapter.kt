@@ -16,7 +16,6 @@ import com.ayhanunal.movies.util.downloadImage
 import com.ayhanunal.movies.util.placeholderProgressBar
 import com.ayhanunal.movies.view.MovieDetailsFragmentDirections
 import com.ayhanunal.movies.view.PersonDetailsFragmentDirections
-import kotlinx.android.synthetic.main.row_credits.view.*
 
 class CreditAdapter(private val list: List<CastX>) : RecyclerView.Adapter<CreditAdapter.ViewHolder>(), CreditClickListener {
 

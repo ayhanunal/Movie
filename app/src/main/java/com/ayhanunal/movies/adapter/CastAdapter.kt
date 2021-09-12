@@ -15,7 +15,6 @@ import com.ayhanunal.movies.model.Cast
 import com.ayhanunal.movies.util.downloadImage
 import com.ayhanunal.movies.util.placeholderProgressBar
 import com.ayhanunal.movies.view.MovieDetailsFragmentDirections
-import kotlinx.android.synthetic.main.row_cast.view.*
 
 class CastAdapter(private val list: List<Cast>) : RecyclerView.Adapter<CastAdapter.ViewHolder>(), CastClickListener {
 

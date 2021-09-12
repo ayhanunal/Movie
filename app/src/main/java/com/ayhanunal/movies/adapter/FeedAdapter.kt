@@ -14,7 +14,6 @@ import com.ayhanunal.movies.model.Result
 import com.ayhanunal.movies.util.downloadImage
 import com.ayhanunal.movies.util.placeholderProgressBar
 import com.ayhanunal.movies.view.FeedFragmentDirections
-import kotlinx.android.synthetic.main.row_feed.view.*
 
 class FeedAdapter(private val list: ArrayList<Result>) : RecyclerView.Adapter<FeedAdapter.FeedViewHolder>(), MovieClickListener{
 

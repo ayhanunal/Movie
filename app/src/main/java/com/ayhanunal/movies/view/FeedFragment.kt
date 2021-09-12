@@ -1,7 +1,12 @@
 package com.ayhanunal.movies.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.ImageButton
+import android.widget.ProgressBar
+import android.widget.TextView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -11,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ayhanunal.movies.R
 import com.ayhanunal.movies.adapter.FeedAdapter
 import com.ayhanunal.movies.viewmodel.FeedViewModel
-import kotlinx.android.synthetic.main.fragment_feed.*
 
 class FeedFragment : Fragment(R.layout.fragment_feed), SearchView.OnQueryTextListener {
 
@@ -39,12 +43,13 @@ class FeedFragment : Fragment(R.layout.fragment_feed), SearchView.OnQueryTextLis
         viewModel = ViewModelProviders.of(this).get(FeedViewModel::class.java)
         viewModel.refreshData(page)
 
-        feed_fragment_feed_recycler_view.layoutManager = LinearLayoutManager(context)
-        feed_fragment_feed_recycler_view.adapter = movieAdapter
+        view.findViewById<RecyclerView>(R.id.feed_fragment_feed_recycler_view).layoutManager = LinearLayoutManager(context)
+        view.findViewById<RecyclerView>(R.id.feed_fragment_feed_recycler_view).adapter = movieAdapter
 
-        observeLiveData()
 
-        fragment_feed_next_page_button.setOnClickListener {
+        observeLiveData(view)
+
+        view.findViewById<ImageButton>(R.id.fragment_feed_next_page_button).setOnClickListener {
             if (!isLoading && page < totalPages){
                 isLoading = true
                 page++
@@ -53,11 +58,11 @@ class FeedFragment : Fragment(R.layout.fragment_feed), SearchView.OnQueryTextLis
                 }else{
                     viewModel.refreshData(page)
                 }
-                fragment_feed_page_text_view.text = "${page} / ${totalPages}"
+                view.findViewById<TextView>(R.id.fragment_feed_page_text_view).text = "${page} / ${totalPages}"
             }
         }
 
-        fragment_feed_previous_page_button.setOnClickListener {
+        view.findViewById<ImageButton>(R.id.fragment_feed_previous_page_button).setOnClickListener {
             if (!isLoading && page > 1){
                 isLoading = true
                 page--
@@ -66,13 +71,13 @@ class FeedFragment : Fragment(R.layout.fragment_feed), SearchView.OnQueryTextLis
                 }else{
                     viewModel.refreshData(page)
                 }
-                fragment_feed_page_text_view.text = "${page} / ${totalPages}"
+                view.findViewById<TextView>(R.id.fragment_feed_page_text_view).text = "${page} / ${totalPages}"
             }
         }
 
     }
 
-    private fun observeLiveData() {
+    private fun observeLiveData(view: View) {
         viewModel.movies.observe(viewLifecycleOwner, Observer {movies ->
             movies?.let {
                 if (isLoading) {
@@ -88,9 +93,9 @@ class FeedFragment : Fragment(R.layout.fragment_feed), SearchView.OnQueryTextLis
         viewModel.movieError.observe(viewLifecycleOwner, Observer {error ->
             error?.let {
                 if (it) {
-                    feed_fragment_feed_error_text_view.visibility = View.VISIBLE
+                    view.findViewById<AppCompatTextView>(R.id.feed_fragment_feed_error_text_view).visibility = View.VISIBLE
                 } else {
-                    feed_fragment_feed_error_text_view.visibility = View.GONE
+                    view.findViewById<AppCompatTextView>(R.id.feed_fragment_feed_error_text_view).visibility = View.GONE
                 }
             }
         })
@@ -99,12 +104,12 @@ class FeedFragment : Fragment(R.layout.fragment_feed), SearchView.OnQueryTextLis
 
             loading?.let {
                 if (it) {
-                    feed_fragment_progress_bar.visibility = View.VISIBLE
-                    feed_fragment_feed_recycler_view.visibility = View.GONE
-                    feed_fragment_feed_error_text_view.visibility = View.GONE
+                    view.findViewById<ProgressBar>(R.id.feed_fragment_progress_bar).visibility = View.VISIBLE
+                    view.findViewById<RecyclerView>(R.id.feed_fragment_feed_recycler_view).visibility = View.GONE
+                    view.findViewById<AppCompatTextView>(R.id.feed_fragment_feed_error_text_view).visibility = View.GONE
                 } else {
-                    feed_fragment_progress_bar.visibility = View.GONE
-                    feed_fragment_feed_recycler_view.visibility = View.VISIBLE
+                    view.findViewById<ProgressBar>(R.id.feed_fragment_progress_bar).visibility = View.GONE
+                    view.findViewById<RecyclerView>(R.id.feed_fragment_feed_recycler_view).visibility = View.VISIBLE
                 }
             }
         })
@@ -112,7 +117,7 @@ class FeedFragment : Fragment(R.layout.fragment_feed), SearchView.OnQueryTextLis
         viewModel.totalPage.observe(viewLifecycleOwner, Observer {tPages ->
             tPages?.let {
                 totalPages = tPages
-                fragment_feed_page_text_view.text = "${page} / ${totalPages}"
+                view.findViewById<TextView>(R.id.fragment_feed_page_text_view).text = "${page} / ${totalPages}"
             }
         })
     }

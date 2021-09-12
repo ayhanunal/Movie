@@ -6,19 +6,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.ayhanunal.movies.R
 import com.ayhanunal.movies.adapter.CastAdapter
 import com.ayhanunal.movies.adapter.VideosAdapter
 import com.ayhanunal.movies.databinding.FragmentMovieDetailsBinding
-import com.ayhanunal.movies.util.downloadImage
-import com.ayhanunal.movies.util.placeholderProgressBar
 import com.ayhanunal.movies.viewmodel.MovieDetailsViewModel
-import kotlinx.android.synthetic.main.fragment_movie_details.*
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class MovieDetailsFragment : Fragment() {
@@ -50,21 +51,23 @@ class MovieDetailsFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(MovieDetailsViewModel::class.java)
         viewModel.refreshData(movieId)
 
-        observeLiveData()
+        observeLiveData(view)
 
-        movie_details_fab.setOnClickListener {
-            if (!movieLink.isNullOrEmpty()){
+        view.findViewById<FloatingActionButton>(R.id.movie_details_fab).setOnClickListener {
+            if (!movieLink.isEmpty()){
                 val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(movieLink))
                 startActivity(browserIntent)
             }
         }
     }
 
-    private fun observeLiveData() {
+    private fun observeLiveData(view: View) {
         viewModel.actors.observe(viewLifecycleOwner, Observer {
             adapter = CastAdapter(it)
-            movie_details_cast_recycler_view.layoutManager = GridLayoutManager(context, 4)
-            movie_details_cast_recycler_view.adapter = adapter
+
+            view.findViewById<RecyclerView>(R.id.movie_details_cast_recycler_view).layoutManager = GridLayoutManager(context, 4)
+            view.findViewById<RecyclerView>(R.id.movie_details_cast_recycler_view).adapter = adapter
+
         })
 
         viewModel.detail.observe(viewLifecycleOwner, Observer {
@@ -78,27 +81,28 @@ class MovieDetailsFragment : Fragment() {
 
         viewModel.movieDetailLoading.observe(viewLifecycleOwner, Observer {
             if (it) {
-                movie_details_movie_detail_container.visibility = View.GONE
-                movie_details_loading_progress_bar.visibility = View.VISIBLE
+                view.findViewById<ConstraintLayout>(R.id.movie_details_movie_detail_container).visibility = View.GONE
+                view.findViewById<ProgressBar>(R.id.movie_details_loading_progress_bar).visibility = View.VISIBLE
             } else {
-                movie_details_movie_detail_container.visibility = View.VISIBLE
-                movie_details_loading_progress_bar.visibility = View.GONE
+                view.findViewById<ConstraintLayout>(R.id.movie_details_movie_detail_container).visibility = View.VISIBLE
+                view.findViewById<ProgressBar>(R.id.movie_details_loading_progress_bar).visibility = View.GONE
             }
         })
 
         viewModel.actorsLoading.observe(viewLifecycleOwner, Observer {
             if (it) {
-                movie_details_cast_recycler_view.visibility = View.GONE
+                view.findViewById<RecyclerView>(R.id.movie_details_cast_recycler_view).visibility = View.GONE
             } else {
-                movie_details_cast_recycler_view.visibility = View.VISIBLE
+                view.findViewById<RecyclerView>(R.id.movie_details_cast_recycler_view).visibility = View.VISIBLE
             }
         })
 
         viewModel.videos.observe(viewLifecycleOwner, Observer {
             videosAdapter = VideosAdapter(it.results)
-            movie_details_actor_videos_recycler_view.layoutManager = GridLayoutManager(context, 3)
-            movie_details_actor_videos_recycler_view.adapter = videosAdapter
+
+            view.findViewById<RecyclerView>(R.id.movie_details_actor_videos_recycler_view).layoutManager = GridLayoutManager(context, 3)
+            view.findViewById<RecyclerView>(R.id.movie_details_actor_videos_recycler_view).adapter = videosAdapter
+
         })
     }
-
 }
