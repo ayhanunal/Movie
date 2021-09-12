@@ -58,7 +58,7 @@ class FeedFragment : Fragment(R.layout.fragment_feed), SearchView.OnQueryTextLis
                 }else{
                     viewModel.refreshData(page)
                 }
-                view.findViewById<TextView>(R.id.fragment_feed_page_text_view).text = "${page} / ${totalPages}"
+                view.findViewById<TextView>(R.id.fragment_feed_page_text_view).text = getString(R.string.fragment_feed_page_text, page, totalPages)
             }
         }
 
@@ -71,7 +71,7 @@ class FeedFragment : Fragment(R.layout.fragment_feed), SearchView.OnQueryTextLis
                 }else{
                     viewModel.refreshData(page)
                 }
-                view.findViewById<TextView>(R.id.fragment_feed_page_text_view).text = "${page} / ${totalPages}"
+                view.findViewById<TextView>(R.id.fragment_feed_page_text_view).text = getString(R.string.fragment_feed_page_text, page, totalPages)
             }
         }
 
@@ -117,7 +117,7 @@ class FeedFragment : Fragment(R.layout.fragment_feed), SearchView.OnQueryTextLis
         viewModel.totalPage.observe(viewLifecycleOwner, Observer {tPages ->
             tPages?.let {
                 totalPages = tPages
-                view.findViewById<TextView>(R.id.fragment_feed_page_text_view).text = "${page} / ${totalPages}"
+                view.findViewById<TextView>(R.id.fragment_feed_page_text_view).text = getString(R.string.fragment_feed_page_text, page, totalPages)
             }
         })
     }
