@@ -25,7 +25,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class MovieDetailsFragment : Fragment() {
 
     private var movieId = 0
-    private var adapter = CastAdapter(arrayListOf())
+    private var castAdapter = CastAdapter(arrayListOf())
     private var videosAdapter = VideosAdapter(arrayListOf())
 
     private lateinit var dataBinding: FragmentMovieDetailsBinding
@@ -63,10 +63,10 @@ class MovieDetailsFragment : Fragment() {
 
     private fun observeLiveData(view: View) {
         viewModel.actors.observe(viewLifecycleOwner, Observer {
-            adapter = CastAdapter(it)
+            castAdapter = CastAdapter(it)
 
             view.findViewById<RecyclerView>(R.id.movie_details_cast_recycler_view).layoutManager = GridLayoutManager(context, 4)
-            view.findViewById<RecyclerView>(R.id.movie_details_cast_recycler_view).adapter = adapter
+            view.findViewById<RecyclerView>(R.id.movie_details_cast_recycler_view).adapter = castAdapter
 
         })
 

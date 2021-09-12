@@ -20,7 +20,7 @@ class PersonDetailsFragment : Fragment() {
     private lateinit var dataBinding: FragmentPersonDetailsBinding
     private lateinit var viewModel: PersonDetailsViewModel
 
-    private var adapter = CreditAdapter(arrayListOf())
+    private var creditAdapter = CreditAdapter(arrayListOf())
 
     private var actorId = 0
 
@@ -54,10 +54,10 @@ class PersonDetailsFragment : Fragment() {
 
         viewModel.credits.observe(viewLifecycleOwner, Observer {
             it?.let {
-                adapter = CreditAdapter(it)
+                creditAdapter = CreditAdapter(it)
 
                 view.findViewById<RecyclerView>(R.id.person_details_actor_credits_recycler_view).layoutManager = GridLayoutManager(context, 3)
-                view.findViewById<RecyclerView>(R.id.person_details_actor_credits_recycler_view).adapter = adapter
+                view.findViewById<RecyclerView>(R.id.person_details_actor_credits_recycler_view).adapter = creditAdapter
             }
         })
     }

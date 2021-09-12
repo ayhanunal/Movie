@@ -22,8 +22,6 @@ class PersonDetailsViewModel(application: Application) : BaseViewModel(applicati
     var credits = MutableLiveData<List<CastX>>()
     var videos = MutableLiveData<List<MovieDetail>>()
 
-    var isLoading = MutableLiveData<Boolean>()
-
     fun refreshData(id: Int) {
         getDataFromAPI(id)
     }
