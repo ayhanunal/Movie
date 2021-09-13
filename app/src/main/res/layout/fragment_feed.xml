@@ -42,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/app_main_color"
                     android:layout_marginStart="20dp"
-                    android:src="@drawable/fav_movie_icon"
+                    android:src="@drawable/fav_movie_icon_active"
                     android:layout_gravity="center"
                     app:tint="@color/white" />
 

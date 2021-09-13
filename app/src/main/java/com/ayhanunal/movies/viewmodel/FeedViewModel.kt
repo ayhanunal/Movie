@@ -5,11 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import com.ayhanunal.movies.model.Movie
 import com.ayhanunal.movies.model.Result
 import com.ayhanunal.movies.model.Search
+import com.ayhanunal.movies.roomdb.FavMoviesDatabase
 import com.ayhanunal.movies.service.MovieAPIService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.launch
 
 class FeedViewModel(application: Application) : BaseViewModel(application) {
 

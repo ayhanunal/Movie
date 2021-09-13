@@ -39,6 +39,29 @@ class FavMoviesFragment : Fragment(R.layout.fragment_fav_movies) {
                 movieAdapter.updateList(it)
             }
         })
+
+        viewModel.movieError.observe(viewLifecycleOwner, Observer {error ->
+            error?.let {
+                if (it) {
+                    view.findViewById<AppCompatTextView>(R.id.fav_movies_fragment_feed_error_text_view).visibility = View.VISIBLE
+                } else {
+                    view.findViewById<AppCompatTextView>(R.id.fav_movies_fragment_feed_error_text_view).visibility = View.GONE
+                }
+            }
+        })
+
+        viewModel.movieLoading.observe(viewLifecycleOwner, Observer {loading ->
+            loading?.let {
+                if (it) {
+                    view.findViewById<ProgressBar>(R.id.fav_movies_fragment_progress_bar).visibility = View.VISIBLE
+                    view.findViewById<RecyclerView>(R.id.fav_movies_fragment_feed_recycler_view).visibility = View.GONE
+                    view.findViewById<AppCompatTextView>(R.id.fav_movies_fragment_feed_error_text_view).visibility = View.GONE
+                } else {
+                    view.findViewById<ProgressBar>(R.id.fav_movies_fragment_progress_bar).visibility = View.GONE
+                    view.findViewById<RecyclerView>(R.id.fav_movies_fragment_feed_recycler_view).visibility = View.VISIBLE
+                }
+            }
+        })
     }
 
 }

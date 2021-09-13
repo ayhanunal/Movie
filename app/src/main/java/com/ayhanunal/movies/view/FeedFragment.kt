@@ -48,7 +48,6 @@ class FeedFragment : Fragment(R.layout.fragment_feed), SearchView.OnQueryTextLis
         view.findViewById<RecyclerView>(R.id.feed_fragment_feed_recycler_view).layoutManager = LinearLayoutManager(context)
         view.findViewById<RecyclerView>(R.id.feed_fragment_feed_recycler_view).adapter = movieAdapter
 
-
         observeLiveData(view)
 
         view.findViewById<ImageButton>(R.id.fragment_feed_next_page_button).setOnClickListener {

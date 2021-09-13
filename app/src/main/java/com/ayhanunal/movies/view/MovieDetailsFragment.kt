@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ProgressBar
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -32,6 +33,7 @@ class MovieDetailsFragment : Fragment() {
     private lateinit var dataBinding: FragmentMovieDetailsBinding
     private lateinit var viewModel : MovieDetailsViewModel
     private lateinit var movieLink: String
+    private var isFavMovie: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +62,19 @@ class MovieDetailsFragment : Fragment() {
                 startActivity(browserIntent)
             }
         }
+
+        view.findViewById<ImageButton>(R.id.movie_details_movie_fav_button).setOnClickListener {
+            if (isFavMovie){
+                //deactive
+                viewModel.favOrUnfavMovie(false)
+                view.findViewById<ImageButton>(R.id.movie_details_movie_fav_button).setImageDrawable(resources.getDrawable(R.drawable.fav_movie_icon_active))
+            }else{
+                //active
+                viewModel.favOrUnfavMovie(true)
+                view.findViewById<ImageButton>(R.id.movie_details_movie_fav_button).setImageDrawable(resources.getDrawable(R.drawable.fav_movie_icon_deactive))
+            }
+        }
+
     }
 
     private fun observeLiveData(view: View) {
@@ -112,6 +127,16 @@ class MovieDetailsFragment : Fragment() {
                 view.findViewById<AppCompatTextView>(R.id.movie_details_actor_detail_text_videos).visibility = View.GONE
             }
 
+        })
+
+        viewModel.isFavMovie.observe(viewLifecycleOwner, Observer {
+            isFavMovie = it
+            if (it) {
+                //fav movie true
+                view.findViewById<ImageButton>(R.id.movie_details_movie_fav_button).setImageDrawable(resources.getDrawable(R.drawable.fav_movie_icon_active))
+            } else {
+                view.findViewById<ImageButton>(R.id.movie_details_movie_fav_button).setImageDrawable(resources.getDrawable(R.drawable.fav_movie_icon_deactive))
+            }
         })
     }
 }

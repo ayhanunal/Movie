@@ -27,4 +27,7 @@
     <string name="fragment_movie_details_movie_image">https://image.tmdb.org/t/p/w780%s</string>
     <string name="fragment_movie_details_video_image">https://img.youtube.com/vi/%s/0.jpg</string>
 
+    <!-- fragment fav movies -->
+    <string name="fav_movie_fragment_error_text">Database error or Favourite Movie collection is empty.</string>
+
 </resources>
