@@ -11,6 +11,8 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ayhanunal.movies.R
@@ -75,6 +77,10 @@ class FeedFragment : Fragment(R.layout.fragment_feed), SearchView.OnQueryTextLis
             }
         }
 
+        view.findViewById<ImageButton>(R.id.feed_fragment_fav_movies_button).setOnClickListener {
+            val action = FeedFragmentDirections.actionFeedFragmentToFavMoviesFragment()
+            Navigation.findNavController(view).navigate(action)
+        }
     }
 
     private fun observeLiveData(view: View) {

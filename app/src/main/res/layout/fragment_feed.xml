@@ -19,7 +19,8 @@
             android:background="@color/app_main_color"
             android:layout_weight="18">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingHorizontal="20dp">
@@ -28,16 +29,24 @@
                     android:id="@+id/feed_fragment_feed_search_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginVertical="10dp"
                     android:background="@drawable/edit_text_style"
                     android:singleLine="true"
-                    app:queryHint="@string/feed_search_edit_text_hint"
                     app:iconifiedByDefault="true"
-                    android:layout_marginVertical="10dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:queryHint="@string/feed_search_edit_text_hint" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageButton
+                    android:id="@+id/feed_fragment_fav_movies_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/app_main_color"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/fav_movie_icon"
+                    android:layout_gravity="center"
+                    app:tint="@color/white" />
+
+            </LinearLayout>
 
         </androidx.appcompat.widget.Toolbar>
 

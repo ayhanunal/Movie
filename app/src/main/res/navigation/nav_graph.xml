@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_feedFragment_to_movieDetailsFragment"
             app:destination="@id/movieDetailsFragment" />
+        <action
+            android:id="@+id/action_feedFragment_to_favMoviesFragment"
+            app:destination="@id/favMoviesFragment" />
     </fragment>
     <fragment
         android:id="@+id/personDetailsFragment"
@@ -36,5 +39,13 @@
             android:name="actorID"
             app:argType="integer"
             android:defaultValue="0" />
+    </fragment>
+    <fragment
+        android:id="@+id/favMoviesFragment"
+        android:name="com.ayhanunal.movies.view.FavMoviesFragment"
+        android:label="FavMoviesFragment" >
+        <action
+            android:id="@+id/action_favMoviesFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
     </fragment>
 </navigation>
