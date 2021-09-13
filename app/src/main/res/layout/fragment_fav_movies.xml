@@ -33,7 +33,7 @@
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:textSize="20sp"
-                    android:text="FAV MOVIES"/>
+                    android:text="FAVORITE MOVIES"/>
 
             </LinearLayout>
 
