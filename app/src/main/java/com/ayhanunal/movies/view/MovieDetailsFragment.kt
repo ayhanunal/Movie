@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -92,8 +93,10 @@ class MovieDetailsFragment : Fragment() {
         viewModel.actorsLoading.observe(viewLifecycleOwner, Observer {
             if (it) {
                 view.findViewById<RecyclerView>(R.id.movie_details_cast_recycler_view).visibility = View.GONE
+                view.findViewById<AppCompatTextView>(R.id.movie_details_detail_text_cast).visibility = View.GONE
             } else {
                 view.findViewById<RecyclerView>(R.id.movie_details_cast_recycler_view).visibility = View.VISIBLE
+                view.findViewById<AppCompatTextView>(R.id.movie_details_detail_text_cast).visibility = View.VISIBLE
             }
         })
 
@@ -102,6 +105,12 @@ class MovieDetailsFragment : Fragment() {
 
             view.findViewById<RecyclerView>(R.id.movie_details_actor_videos_recycler_view).layoutManager = GridLayoutManager(context, 3)
             view.findViewById<RecyclerView>(R.id.movie_details_actor_videos_recycler_view).adapter = videosAdapter
+
+            if (it.results.isNotEmpty()){
+                view.findViewById<AppCompatTextView>(R.id.movie_details_actor_detail_text_videos).visibility = View.VISIBLE
+            }else{
+                view.findViewById<AppCompatTextView>(R.id.movie_details_actor_detail_text_videos).visibility = View.GONE
+            }
 
         })
     }
