@@ -9,11 +9,11 @@
             type="com.ayhanunal.movies.model.CastX" />
         <variable
             name="listener"
-            type="com.ayhanunal.movies.adapter.listener.CreditClickListener" />
+            type="com.ayhanunal.movies.adapter.listener.MyItemClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:onClick="@{listener::onCreditClicked}"
+        android:onClick="@{listener::onMyItemClicked}"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 

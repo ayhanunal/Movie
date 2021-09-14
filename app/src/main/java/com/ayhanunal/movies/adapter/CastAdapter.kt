@@ -8,15 +8,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.ayhanunal.movies.R
-import com.ayhanunal.movies.adapter.listener.CastClickListener
+import com.ayhanunal.movies.adapter.listener.MyItemClickListener
 import com.ayhanunal.movies.databinding.RowCastBinding
-import com.ayhanunal.movies.databinding.RowFeedBinding
 import com.ayhanunal.movies.model.Cast
-import com.ayhanunal.movies.util.downloadImage
-import com.ayhanunal.movies.util.placeholderProgressBar
 import com.ayhanunal.movies.view.MovieDetailsFragmentDirections
 
-class CastAdapter(private val list: List<Cast>) : RecyclerView.Adapter<CastAdapter.ViewHolder>(), CastClickListener {
+class CastAdapter(private val list: List<Cast>) : RecyclerView.Adapter<CastAdapter.ViewHolder>(), MyItemClickListener {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -33,7 +30,7 @@ class CastAdapter(private val list: List<Cast>) : RecyclerView.Adapter<CastAdapt
         holder.view.cast = list[position]
     }
 
-    override fun onCastClicked(v: View) {
+    override fun onMyItemClicked(v: View) {
         val actorID = v.findViewById<TextView>(R.id.row_cost_actor_id).text.toString().toInt()
         val action = MovieDetailsFragmentDirections.actionMovieDetailsFragmentToPersonDetailsFragment(actorID)
         Navigation.findNavController(v).navigate(action)

@@ -10,12 +10,12 @@ import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ayhanunal.movies.R
-import com.ayhanunal.movies.adapter.listener.VideoClickListener
+import com.ayhanunal.movies.adapter.listener.MyItemClickListener
 import com.ayhanunal.movies.databinding.RowVideosBinding
 import com.ayhanunal.movies.model.ResultX
 
 class VideosAdapter(private val list: List<ResultX>): RecyclerView.Adapter<VideosAdapter.ViewHolder>(),
-    VideoClickListener {
+    MyItemClickListener {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -42,7 +42,7 @@ class VideosAdapter(private val list: List<ResultX>): RecyclerView.Adapter<Video
         }
     }
 
-    override fun onVideoClicked(v: View) {
+    override fun onMyItemClicked(v: View) {
         val videoKey = v.findViewById<TextView>(R.id.row_videos_key_text).text.toString()
         openYoutube(v, videoKey)
     }

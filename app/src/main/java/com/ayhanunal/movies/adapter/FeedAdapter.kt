@@ -1,6 +1,5 @@
 package com.ayhanunal.movies.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,16 +8,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.ayhanunal.movies.R
-import com.ayhanunal.movies.adapter.listener.MovieClickListener
+import com.ayhanunal.movies.adapter.listener.MyItemClickListener
 import com.ayhanunal.movies.databinding.RowFeedBinding
 import com.ayhanunal.movies.model.Result
-import com.ayhanunal.movies.util.downloadImage
-import com.ayhanunal.movies.util.placeholderProgressBar
 import com.ayhanunal.movies.view.FavMoviesFragmentDirections
-import com.ayhanunal.movies.view.FeedFragment
 import com.ayhanunal.movies.view.FeedFragmentDirections
 
-class FeedAdapter(private val list: ArrayList<Result>) : RecyclerView.Adapter<FeedAdapter.FeedViewHolder>(), MovieClickListener{
+class FeedAdapter(private val list: ArrayList<Result>) : RecyclerView.Adapter<FeedAdapter.FeedViewHolder>(),
+    MyItemClickListener {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -49,7 +46,7 @@ class FeedAdapter(private val list: ArrayList<Result>) : RecyclerView.Adapter<Fe
         notifyDataSetChanged()
     }
 
-    override fun onMovieClicked(v: View) {
+    override fun onMyItemClicked(v: View) {
         val movieID = v.findViewById<TextView>(R.id.row_feed_movie_id).text.toString().toInt()
         if (Navigation.findNavController(v).currentDestination?.id == R.id.feedFragment){
             val action = FeedFragmentDirections.actionFeedFragmentToMovieDetailsFragment(movieID)

@@ -2,8 +2,8 @@ package com.ayhanunal.movies.adapter.listener
 
 import android.view.View
 
-interface CastClickListener {
+interface MyItemClickListener {
 
-    fun onCastClicked(v: View)
+    fun onMyItemClicked(v: View)
 
 }

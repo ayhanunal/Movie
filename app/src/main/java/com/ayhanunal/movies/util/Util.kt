@@ -13,7 +13,7 @@ fun ImageView.downloadImage(url: String?, progressDrawable: CircularProgressDraw
 
     val options = RequestOptions()
         .placeholder(progressDrawable)
-        .error(R.mipmap.no_image_place_holder)
+        .error(R.drawable.logo)
 
     Glide.with(context)
         .setDefaultRequestOptions(options)

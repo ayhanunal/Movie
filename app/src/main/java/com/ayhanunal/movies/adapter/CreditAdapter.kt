@@ -8,16 +8,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.ayhanunal.movies.R
-import com.ayhanunal.movies.adapter.listener.CreditClickListener
-import com.ayhanunal.movies.databinding.RowCastBinding
+import com.ayhanunal.movies.adapter.listener.MyItemClickListener
 import com.ayhanunal.movies.databinding.RowCreditsBinding
 import com.ayhanunal.movies.model.CastX
-import com.ayhanunal.movies.util.downloadImage
-import com.ayhanunal.movies.util.placeholderProgressBar
-import com.ayhanunal.movies.view.MovieDetailsFragmentDirections
 import com.ayhanunal.movies.view.PersonDetailsFragmentDirections
 
-class CreditAdapter(private val list: List<CastX>) : RecyclerView.Adapter<CreditAdapter.ViewHolder>(), CreditClickListener {
+class CreditAdapter(private val list: List<CastX>) : RecyclerView.Adapter<CreditAdapter.ViewHolder>(),
+    MyItemClickListener {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -34,7 +31,7 @@ class CreditAdapter(private val list: List<CastX>) : RecyclerView.Adapter<Credit
         holder.view.credit = list[position]
     }
 
-    override fun onCreditClicked(v: View) {
+    override fun onMyItemClicked(v: View) {
         val movieID = v.findViewById<TextView>(R.id.row_credits_credit_id).text.toString().toInt()
         val action = PersonDetailsFragmentDirections.actionPersonDetailsFragmentToMovieDetailsFragment(movieID)
         Navigation.findNavController(v).navigate(action)

@@ -9,11 +9,11 @@
             type="com.ayhanunal.movies.model.ResultX" />
         <variable
             name="listener"
-            type="com.ayhanunal.movies.adapter.listener.VideoClickListener" />
+            type="com.ayhanunal.movies.adapter.listener.MyItemClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:onClick="@{listener::onVideoClicked}"
+        android:onClick="@{listener::onMyItemClicked}"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 

@@ -10,13 +10,13 @@
             type="com.ayhanunal.movies.model.Result" />
         <variable
             name="listener"
-            type="com.ayhanunal.movies.adapter.listener.MovieClickListener" />
+            type="com.ayhanunal.movies.adapter.listener.MyItemClickListener" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:onClick="@{listener::onMovieClicked}"
+        android:onClick="@{listener::onMyItemClicked}"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
