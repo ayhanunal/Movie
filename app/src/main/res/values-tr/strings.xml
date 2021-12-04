@@ -19,8 +19,8 @@
     <string name="row_feed_movie_date_text">Yayin Tarihi: %s</string>
     <string name="row_feed_movie_language_text">Film Dili: %s</string>
     <string name="row_feed_movie_popularity_text">Popülarite: %s</string>
-    <string name="row_feed_movie_adult_yes_text">Adult Movie: Evet</string>
-    <string name="row_feed_movie_adult_no_text">Adult Movie: Hayir</string>
+    <string name="row_feed_movie_adult_yes_text">Yetiskin: Evet</string>
+    <string name="row_feed_movie_adult_no_text">Yetiskin: Hayir</string>
 
     <!-- data binding download image paths -->
     <string name="row_feed_poster_image">https://image.tmdb.org/t/p/w185%s</string>
