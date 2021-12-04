@@ -31,4 +31,8 @@
     <string name="fav_movie_fragment_error_text">Database error or Favourite Movie collection is empty.</string>
     <string name="favorite_movies_fragment_toolbar_text">FAVORITE MOVIES</string>
 
+    <!-- fragment app_settings -->
+    <string name="app_settings_fragment_toolbar_text">SETTINGS</string>
+    <string name="app_settings_fragment_choose_language_text">Choose Language</string>
+
 </resources>

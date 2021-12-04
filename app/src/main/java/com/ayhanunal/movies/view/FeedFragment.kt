@@ -80,6 +80,11 @@ class FeedFragment : Fragment(R.layout.fragment_feed), SearchView.OnQueryTextLis
             val action = FeedFragmentDirections.actionFeedFragmentToFavMoviesFragment()
             Navigation.findNavController(view).navigate(action)
         }
+
+        view.findViewById<ImageButton>(R.id.feed_fragment_settings_button).setOnClickListener {
+            val action = FeedFragmentDirections.actionFeedFragmentToSettingsFragment()
+            Navigation.findNavController(view).navigate(action)
+        }
     }
 
     private fun observeLiveData(view: View) {

@@ -46,6 +46,16 @@
                     android:layout_gravity="center"
                     app:tint="@color/white" />
 
+                <ImageButton
+                    android:id="@+id/feed_fragment_settings_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/app_main_color"
+                    android:layout_marginStart="8dp"
+                    android:src="@drawable/settings_icon"
+                    android:layout_gravity="center"
+                    app:tint="@color/white" />
+
             </LinearLayout>
 
         </androidx.appcompat.widget.Toolbar>

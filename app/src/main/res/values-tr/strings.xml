@@ -32,4 +32,8 @@
     <string name="fav_movie_fragment_error_text">Favori filmler koleksiyonu boş veya Database Hatasi</string>
     <string name="favorite_movies_fragment_toolbar_text">FAVORİ FİLMLER</string>
 
+    <!-- fragment app_settings -->
+    <string name="app_settings_fragment_toolbar_text">AYARLAR</string>
+    <string name="app_settings_fragment_choose_language_text">Dil Seçiniz</string>
+
 </resources>
