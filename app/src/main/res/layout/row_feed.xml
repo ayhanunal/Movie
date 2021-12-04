@@ -58,27 +58,27 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
-                        android:text="@{`Release Date: ` + movie.release_date}" />
+                        android:text="@{@string/row_feed_movie_date_text(movie.release_date)}" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/row_feed_movie_language"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
-                        android:text="@{`Movie Language: ` + movie.original_language}" />
+                        android:text="@{@string/row_feed_movie_language_text(movie.original_language)}" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/row_feed_movie_popularity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
-                        android:text="@{`Movie Popularity: ` + movie.popularity}" />
+                        android:text="@{@string/row_feed_movie_popularity_text(movie.popularity)}" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/row_feed_movie_adult"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@{movie.adult ? `Adult: Yes` : `Adult: No`}"
+                        android:text="@{movie.adult ? @string/row_feed_movie_adult_yes_text : @string/row_feed_movie_adult_no_text}"
                         android:layout_margin="2dp" />
 
                     <androidx.appcompat.widget.AppCompatTextView

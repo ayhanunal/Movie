@@ -16,11 +16,11 @@
     <string name="person_details_credits_text">FİLMLER</string>
 
     <!-- row feed -->
-    <string name="row_feed_movie_name_text">Film Adı</string>
-    <string name="row_feed_movie_date_text">Film Tarihi</string>
-    <string name="row_feed_movie_language_text">Film Dili</string>
-    <string name="row_feed_movie_popularity_text">Popülarite</string>
-    <string name="row_feed_movie_adult_text">Yetişkin Film</string>
+    <string name="row_feed_movie_date_text">Yayin Tarihi: %s</string>
+    <string name="row_feed_movie_language_text">Film Dili: %s</string>
+    <string name="row_feed_movie_popularity_text">Popülarite: %s</string>
+    <string name="row_feed_movie_adult_yes_text">Adult Movie: Evet</string>
+    <string name="row_feed_movie_adult_no_text">Adult Movie: Hayir</string>
 
     <!-- data binding download image paths -->
     <string name="row_feed_poster_image">https://image.tmdb.org/t/p/w185%s</string>

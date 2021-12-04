@@ -10,7 +10,7 @@ import retrofit2.http.Query
 
 interface MovieAPI {
 
-    //@GET("movie/popular?page={page}&api_key=01ec5c16d3a7d5c6af56d8e7d9e3af79")
+    //@GET("movie/popular?page={page}&api_key=8ebda190411b279464efdc79f1ee09bc")
 
     @GET("movie/popular")
     fun getMovies(@Query("page") page: Int, @Query("api_key") apiKey: String, @Query("language") language: String): Single<Movie>

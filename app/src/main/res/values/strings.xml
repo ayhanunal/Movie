@@ -15,11 +15,11 @@
     <string name="person_details_credits_text">CREDITS</string>
 
     <!-- row feed -->
-    <string name="row_feed_movie_name_text">Movie Name</string>
-    <string name="row_feed_movie_date_text">Movie Date</string>
-    <string name="row_feed_movie_language_text">Movie Language</string>
-    <string name="row_feed_movie_popularity_text">Movie Popularity</string>
-    <string name="row_feed_movie_adult_text">Movie Adult</string>
+    <string name="row_feed_movie_date_text">Release Date: %s</string>
+    <string name="row_feed_movie_language_text">Movie Language: %s</string>
+    <string name="row_feed_movie_popularity_text">Popularity: %s</string>
+    <string name="row_feed_movie_adult_yes_text">Adult Movie: Yes</string>
+    <string name="row_feed_movie_adult_no_text">Adult Movie: No</string>
 
     <!-- data binding download image paths -->
     <string name="row_feed_poster_image">https://image.tmdb.org/t/p/w185%s</string>
