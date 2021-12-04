@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Movie App</string>
+    <string name="app_name">Movies</string>
 
     <!-- fragment feed -->
     <string name="feed_search_edit_text_hint">Film Ara</string>
