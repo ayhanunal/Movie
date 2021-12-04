@@ -9,6 +9,7 @@ import com.ayhanunal.movies.R
 import android.widget.ImageButton
 import com.ayhanunal.movies.configuration.LocaleSettings
 import com.ayhanunal.movies.configuration.Languages
+import com.ayhanunal.movies.util.CustomSharedPreferences
 
 
 class MainActivity : AppCompatActivity() {
@@ -23,10 +24,18 @@ class MainActivity : AppCompatActivity() {
         navigationController = Navigation.findNavController(this, R.id.fragment)
         //NavigationUI.setupActionBarWithNavController(this, navigationController)
 
-        findViewById<ImageButton>(R.id.change_locale).setOnClickListener {
-            LocaleSettings.setLocale(this, Languages.ENGLISH)
-            refreshCurrentFragment()
+
+        val customPreferences = CustomSharedPreferences(application)
+        LocaleSettings.APP_LOCALE_LANGUAGE = customPreferences.getSavedLocale()
+        val languagesForLocaleLang = Languages.values().filter {
+            it.localeLang == LocaleSettings.APP_LOCALE_LANGUAGE
         }
+        LocaleSettings.setLocale(this, languagesForLocaleLang[0], null)
+
+//        findViewById<ImageButton>(R.id.change_locale).setOnClickListener {
+//            LocaleSettings.setLocale(this, Languages.ENGLISH, customPreferences)
+//            refreshCurrentFragment()
+//        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
