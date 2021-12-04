@@ -33,7 +33,7 @@
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:textSize="20sp"
-                    android:text="FAVORITE MOVIES"/>
+                    android:text="@string/favorite_movies_fragment_toolbar_text"/>
 
             </LinearLayout>
 

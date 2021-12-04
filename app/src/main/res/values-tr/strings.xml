@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Movie App</string>
+
+    <!-- fragment feed -->
+    <string name="feed_search_edit_text_hint">Film Ara</string>
+    <string name="feed_search_button_text">Ara</string>
+    <string name="feed_search_error_text">Film Bulunamadi veya API hatasi.</string>
+    <string name="fragment_feed_page_text">%1$d / %2$d</string>
+
+    <!-- fragment movie details -->
+    <string name="movie_details_cast_text">OYUNCULAR</string>
+    <string name="movie_details_actor_details_video_text">VİDEO</string>
+
+    <!-- fragment person details -->
+    <string name="person_details_credits_text">FİLMLER</string>
+
+    <!-- row feed -->
+    <string name="row_feed_movie_name_text">Film Adı</string>
+    <string name="row_feed_movie_date_text">Film Tarihi</string>
+    <string name="row_feed_movie_language_text">Film Dili</string>
+    <string name="row_feed_movie_popularity_text">Popülarite</string>
+    <string name="row_feed_movie_adult_text">Yetişkin Film</string>
+
+    <!-- data binding download image paths -->
+    <string name="row_feed_poster_image">https://image.tmdb.org/t/p/w185%s</string>
+    <string name="fragment_person_details_person_image">https://image.tmdb.org/t/p/w780%s</string>
+    <string name="fragment_movie_details_movie_image">https://image.tmdb.org/t/p/w780%s</string>
+    <string name="fragment_movie_details_video_image">https://img.youtube.com/vi/%s/0.jpg</string>
+
+    <!-- fragment fav movies -->
+    <string name="fav_movie_fragment_error_text">Favori filmler koleksiyonu boş veya Database Hatasi</string>
+    <string name="favorite_movies_fragment_toolbar_text">FAVORİ FİLMLER</string>
+
+</resources>

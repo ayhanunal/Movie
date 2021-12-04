@@ -29,5 +29,6 @@
 
     <!-- fragment fav movies -->
     <string name="fav_movie_fragment_error_text">Database error or Favourite Movie collection is empty.</string>
+    <string name="favorite_movies_fragment_toolbar_text">FAVORITE MOVIES</string>
 
 </resources>
