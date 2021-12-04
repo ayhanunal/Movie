@@ -1,8 +1,6 @@
 package com.ayhanunal.movies.service
 
-import androidx.annotation.Nullable
 import com.ayhanunal.movies.model.*
-import com.ayhanunal.movies.util.Languages
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path

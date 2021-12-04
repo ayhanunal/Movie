@@ -1,10 +1,10 @@
 package com.ayhanunal.movies.service
 
+import com.ayhanunal.movies.configuration.LocaleSettings
 import com.ayhanunal.movies.model.*
 import com.ayhanunal.movies.util.Constants.API_KEY
 import com.ayhanunal.movies.util.Constants.BASE_URL
-import com.ayhanunal.movies.util.Languages
-import com.ayhanunal.movies.view.MainActivity
+import com.ayhanunal.movies.configuration.Languages
 import io.reactivex.Single
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -12,10 +12,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MovieAPIService {
 
-    private var apiResponseLang: String = when(MainActivity.APP_LOCALE_LANGUAGE){
-        "tr" -> Languages.TURKISH.lang
-        "gr" -> Languages.GERMAN.lang
-        else -> Languages.ENGLISH.lang
+    private var apiResponseLang: String = when(LocaleSettings.APP_LOCALE_LANGUAGE){
+        "tr" -> Languages.TURKISH.apiLang
+        "gr" -> Languages.GERMAN.apiLang
+        else -> Languages.ENGLISH.apiLang
     }
 
     private val api = Retrofit.Builder()
