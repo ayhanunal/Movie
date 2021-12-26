@@ -2,6 +2,8 @@
 <resources>
     <string name="app_name">Movies</string>
 
+    <string name="check_your_internet_connection_text">Internet Baglantinizi Kontrol Ediniz!</string>
+
     <!-- fragment feed -->
     <string name="feed_search_edit_text_hint">Film Ara</string>
     <string name="feed_search_button_text">Ara</string>

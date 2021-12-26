@@ -2,15 +2,18 @@ package com.ayhanunal.movies.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.ayhanunal.movies.R
 import android.widget.ImageButton
+import android.widget.Toast
 import com.ayhanunal.movies.configuration.LocaleSettings
 import com.ayhanunal.movies.configuration.Languages
 import com.ayhanunal.movies.listeners.OnLocaleChangeListener
 import com.ayhanunal.movies.util.CustomSharedPreferences
+import com.ayhanunal.movies.util.checkInternetConnection
 import com.ayhanunal.movies.viewmodel.SettingsViewModel
 
 
@@ -24,6 +27,11 @@ class MainActivity : AppCompatActivity(), OnLocaleChangeListener {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
+
+        if (!checkInternetConnection(this)){
+            Toast.makeText(this, resources.getString(R.string.check_your_internet_connection_text), Toast.LENGTH_LONG).show()
+            finishAndRemoveTask()
+        }
 
         navigationController = Navigation.findNavController(this, R.id.fragment)
         //NavigationUI.setupActionBarWithNavController(this, navigationController)
